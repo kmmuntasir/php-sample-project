@@ -13,7 +13,13 @@ class JsonReader Implements ReaderInterface {
     public function fetch(): OfferCollectionInterface
     {
         $jsonString = file_get_contents($this::JSON_ENDPOINT);
-        return $this->read($jsonString);
+        try {
+            return $this->read($jsonString);
+        } catch(\Exception $e) {
+            $message = date("Y-m-d H:i:s")." ".$e;
+            error_log($message, 3, 'logs/errors.log');
+            return new OfferCollection();
+        }
     }
 
     /**

@@ -1,0 +1,10 @@
+2022-07-20 11:33:09 Exception: Error Parsing JSON Data in /home/munna/storage/localhost/php-sample-project/src/Offer/JsonReader.php:30
+Stack trace:
+#0 /home/munna/storage/localhost/php-sample-project/src/Offer/JsonReader.php(17): App\Offer\JsonReader->read()
+#1 /home/munna/storage/localhost/php-sample-project/src/Command/CountByVendorId.php(27): App\Offer\JsonReader->fetch()
+#2 /home/munna/storage/localhost/php-sample-project/vendor/symfony/console/Command/Command.php(308): App\Command\CountByVendorId->execute()
+#3 /home/munna/storage/localhost/php-sample-project/vendor/symfony/console/Application.php(998): Symfony\Component\Console\Command\Command->run()
+#4 /home/munna/storage/localhost/php-sample-project/vendor/symfony/console/Application.php(299): Symfony\Component\Console\Application->doRunCommand()
+#5 /home/munna/storage/localhost/php-sample-project/vendor/symfony/console/Application.php(171): Symfony\Component\Console\Application->doRun()
+#6 /home/munna/storage/localhost/php-sample-project/run.php(12): Symfony\Component\Console\Application->run()
+#7 {main}
