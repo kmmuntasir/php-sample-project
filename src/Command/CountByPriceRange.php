@@ -13,11 +13,6 @@ use Symfony\Component\Console\Output\OutputInterface;
 class CountByPriceRange extends SymfonyCommand
 {
 
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function configure()
     {
         $this -> setName('count_by_price_range')
