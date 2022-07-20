@@ -25,19 +25,75 @@ class Offer Implements OfferInterface {
         }
     }
 
+    /**
+     * @return int
+     */
+    public function getOfferId(): int
+    {
+        return $this->offerId;
+    }
+
+    /**
+     * @param int $offerId
+     */
+    public function setOfferId(int $offerId): void
+    {
+        $this->offerId = $offerId;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProductTitle(): string
+    {
+        return $this->productTitle;
+    }
+
+    /**
+     * @param string $productTitle
+     */
+    public function setProductTitle(string $productTitle): void
+    {
+        $this->productTitle = $productTitle;
+    }
+
+    /**
+     * @return int
+     */
+    public function getVendorId(): int
+    {
+        return $this->vendorId;
+    }
+
+    /**
+     * @param int $vendorId
+     */
+    public function setVendorId(int $vendorId): void
+    {
+        $this->vendorId = $vendorId;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     */
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
     public function display(): void {
         echo "Offer ID: $this->offerId\n";
         echo "Product: $this->productTitle\n";
         echo "Vendor ID: $this->vendorId\n";
         echo "Price: $this->price\n";
         echo "=========================\n";
-    }
-
-    public function checkPriceRange($min, $max): bool {
-        return (($min <= $this->price) && ($max >= $this->price));
-    }
-
-    public function checkVendorId($vendorId): bool {
-        return $this->vendorId == $vendorId;
     }
 }

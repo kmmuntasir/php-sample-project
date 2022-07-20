@@ -2,6 +2,8 @@
 
 namespace App\Command;
 
+use App\Offer\JsonReader;
+use App\Offer\OfferCollection;
 use App\Offer\OfferService;
 use Symfony\Component\Console\Command\Command as SymfonyCommand;
 use Symfony\Component\Console\Input\InputInterface;
@@ -27,7 +29,10 @@ class CountByPriceRange extends SymfonyCommand
     {
         $min = $input->getArgument('min');
         $max = $input->getArgument('max');
-        $offerService = new OfferService();
+        $offerCollection = new OfferCollection();
+        $reader = new JsonReader($offerCollection);
+        $offerCollection = $reader->fetch();
+        $offerService = new OfferService($offerCollection);
         $result = $offerService->countByPriceRange($min, $max);
         $output -> writeln("$result");
         return 0;

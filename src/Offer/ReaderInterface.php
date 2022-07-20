@@ -13,5 +13,6 @@ interface ReaderInterface
     /**
      * Read in incoming data and parse to objects
      */
+    public function fetch(): OfferCollectionInterface;
     public function read(string $input): OfferCollectionInterface;
 }

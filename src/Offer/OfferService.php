@@ -2,22 +2,13 @@
 
 namespace App\Offer;
 
-const JSON_ENDPOINT = "sample.json";
-
 class OfferService
 {
     private OfferCollection $offerCollection;
 
-    public function __construct() {
-        $this->offerCollection = $this->fetchData();
-    }
-
-    public function fetchData(): OfferCollectionInterface
+    public function __construct(OfferCollection $offerCollection)
     {
-        $jsonString = file_get_contents(JSON_ENDPOINT);
-        $offerCollection = new OfferCollection();
-        $reader = new JsonReader($offerCollection);
-        return  $reader->read($jsonString);
+        $this->offerCollection = $offerCollection;
     }
 
     // Just for the sake of easy debugging
@@ -31,7 +22,8 @@ class OfferService
     public function countByPriceRange($min, $max): int {
         $count = 0;
         foreach($this->offerCollection as $offer) {
-            if($offer->checkPriceRange($min, $max)) {
+            $price = $offer->getPrice();
+            if(($min <= $price) && ($max >= $price)) {
                 ++$count;
             }
         }
@@ -41,7 +33,7 @@ class OfferService
     public function countByVendorId($vendorId): int {
         $count = 0;
         foreach($this->offerCollection as $offer) {
-            if($offer->checkVendorId($vendorId)) {
+            if($vendorId == $offer->getVendorId()) {
                 ++$count;
             }
         }

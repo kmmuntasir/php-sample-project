@@ -7,4 +7,12 @@ namespace App\Offer;
  */
 interface OfferInterface
 {
+    public function getOfferId(): int;
+    public function setOfferId(int $offerId): void;
+    public function getProductTitle(): string;
+    public function setProductTitle(string $productTitle): void;
+    public function getVendorId(): int;
+    public function setVendorId(int $vendorId): void;
+    public function getPrice(): float;
+    public function setPrice(float $price): void;
 }
